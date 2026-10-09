@@ -103,7 +103,6 @@
       background: var(--surface);
     }
 
-    /* تمام گزینه‌های منو در یک خط */
     .nav-links {
       display: flex;
       align-items: center;
@@ -163,7 +162,6 @@
       background: rgba(216,182,106,.1);
     }
 
-    /* دکمه پررنگ کمک به هیئت، بدون قلب */
     .donate-nav {
       background: linear-gradient(135deg, #ffe9a8, #d8b66a);
       color: #071a14 !important;
@@ -476,7 +474,7 @@
       color: var(--gold);
     }
 
-    /* صفحه شماره کارت */
+    /* صفحه کمک نقدی */
     .card-page {
       position: fixed;
       inset: 0;
@@ -607,7 +605,122 @@
       border-color: var(--gold-light);
     }
 
-    /* تبلت و موبایل: گزینه‌های منو همچنان یک‌خطی می‌مانند */
+    /* صفحه هماهنگی نذورات غیرنقدی */
+    .noncash-page {
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      display: none;
+      overflow-y: auto;
+      background:
+        radial-gradient(ellipse at top, #24513a 0%, transparent 60%),
+        linear-gradient(145deg, #0d2a20, #071a14 75%);
+      padding: 25px 0 max(25px, env(safe-area-inset-bottom));
+    }
+
+    .noncash-page.active {
+      display: block;
+    }
+
+    .noncash-page-inner {
+      min-height: calc(100vh - 50px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .noncash-box {
+      width: 100%;
+      max-width: 540px;
+      padding: 35px 24px;
+      text-align: center;
+      background: linear-gradient(145deg, #143b2b, #0b2118);
+      border: 1px solid rgba(216,182,106,.5);
+      border-radius: 20px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.22);
+    }
+
+    .noncash-symbol {
+      font-size: 45px;
+      color: var(--gold);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .noncash-box h2 {
+      color: var(--gold-light);
+      font-size: clamp(21px, 5vw, 28px);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .noncash-box p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .phone-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 350px;
+      min-height: 58px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      border: 2px solid var(--gold-light);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffe9a8, #d8b66a);
+      color: #071a14;
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: 0 0 18px rgba(216,182,106,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .phone-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(216,182,106,.5);
+    }
+
+    .phone-button .phone-icon {
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .phone-number {
+      display: block;
+      direction: ltr;
+      unicode-bidi: embed;
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    .phone-hint {
+      display: block;
+      margin-top: 14px;
+      color: var(--gold-light);
+      font-size: 12px;
+    }
+
+    .noncash-back {
+      margin-top: 22px;
+      width: 100%;
+      max-width: 280px;
+      background: transparent;
+      color: var(--gold-light);
+      border-color: rgba(216,182,106,.65);
+    }
+
+    .noncash-back:hover {
+      background: rgba(216,182,106,.12);
+      border-color: var(--gold-light);
+    }
+
     @media (max-width: 850px) {
       .container {
         width: 96%;
@@ -664,7 +777,6 @@
         height: 36px;
       }
 
-      /* چهار لینک اول و دکمه کمک همگی در یک خط */
       .nav-links {
         display: flex;
         flex-direction: row;
@@ -806,17 +918,28 @@
         margin-inline: auto;
       }
 
-      .card-page-box {
+      .card-page-box,
+      .noncash-box {
         padding: 29px 16px;
         border-radius: 15px;
       }
 
-      .card-page-symbol {
+      .card-page-symbol,
+      .noncash-symbol {
         font-size: 40px;
       }
 
       .card-number strong {
         font-size: clamp(17px, 5vw, 22px);
+      }
+
+      .phone-button {
+        font-size: 13px;
+        padding-inline: 10px;
+      }
+
+      .phone-number {
+        font-size: 19px;
       }
 
       footer {
@@ -998,6 +1121,7 @@
     </p>
   </footer>
 
+  <!-- صفحه کمک نقدی -->
   <section
     class="card-page"
     id="cardPage"
@@ -1030,6 +1154,21 @@
           با سپاس از نذورات و کمک‌های شما
         </span>
 
+        <!-- دکمه ورود به بخش نذورات غیرنقدی -->
+        <button
+          class="button"
+          id="openNoncashPage"
+          type="button"
+          style="width:100%;max-width:350px;margin-top:18px;min-height:58px;background:linear-gradient(135deg,#ffe9a8,#d8b66a);border:2px solid #f2dba0;box-shadow:0 0 16px rgba(216,182,106,.3);font-weight:900;font-size:14px;line-height:1.9;"
+        >
+          <span aria-hidden="true" style="font-size:20px;margin-left:5px;">☎</span>
+          <span>جهت هماهنگی و کمک نذورات غیر نقدی شما</span>
+          <span aria-hidden="true" style="font-size:18px;margin-right:5px;">←</span>
+        </button>
+        <span style="display:block;color:var(--gold-light);font-size:11px;margin-top:8px;">
+          با زدن این دکمه، شماره تماس هماهنگی نمایش داده می‌شود
+        </span>
+
         <button class="button back-button" id="backToHome" type="button">
           <span aria-hidden="true">↩</span>
           بازگشت به صفحه اصلی
@@ -1038,45 +1177,134 @@
     </div>
   </section>
 
+  <!-- صفحه شماره تماس نذورات غیرنقدی -->
+  <section
+    class="noncash-page"
+    id="noncashPage"
+    aria-labelledby="noncashTitle"
+    aria-hidden="true"
+  >
+    <div class="container noncash-page-inner">
+      <div class="noncash-box">
+        <div class="noncash-symbol" aria-hidden="true">☎</div>
+
+        <h2 id="noncashTitle">جهت هماهنگی و کمک نذورات غیر نقدی شما</h2>
+
+        <p>
+          برای هماهنگی نذورات غیرنقدی و کسب اطلاعات بیشتر،
+          از طریق شماره زیر با ما در ارتباط باشید.
+        </p>
+
+        <a
+          class="phone-button"
+          href="tel:09944265446"
+          aria-label="تماس با شماره 09944265446"
+        >
+          <span class="phone-icon" aria-hidden="true">☎</span>
+          <span>
+            <span>مشاهده و تماس با شماره</span>
+            <strong class="phone-number">09944265446</strong>
+          </span>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <span class="phone-hint">
+          با زدن این دکمه، شماره در برنامه تماس گوشی باز می‌شود.
+        </span>
+
+        <button class="button noncash-back" id="backToDonations" type="button">
+          <span aria-hidden="true">↩</span>
+          بازگشت به بخش کمک به هیئت
+        </button>
+      </div>
+    </div>
+  </section>
+
   <script>
     (() => {
       const cardPage = document.getElementById("cardPage");
+      const noncashPage = document.getElementById("noncashPage");
       const mainContent = document.getElementById("mainContent");
       const mainFooter = document.getElementById("mainFooter");
+
       const backButton = document.getElementById("backToHome");
       const copyButton = document.getElementById("copyCardButton");
       const copyButtonText = document.getElementById("copyButtonText");
       const copyMessage = document.getElementById("copyMessage");
       const cardNumberElement = document.getElementById("cardNumber");
 
+      const openNoncashButton = document.getElementById("openNoncashPage");
+      const backToDonationsButton = document.getElementById("backToDonations");
+
       let previousTitle = document.title;
       let messageTimer;
+      let currentPage = "home";
+
+      function hideAllPages() {
+        cardPage.classList.remove("active");
+        noncashPage.classList.remove("active");
+
+        cardPage.setAttribute("aria-hidden", "true");
+        noncashPage.setAttribute("aria-hidden", "true");
+
+        mainContent.setAttribute("aria-hidden", "false");
+        mainFooter.setAttribute("aria-hidden", "false");
+
+        document.body.classList.remove("page-open");
+        document.title = previousTitle;
+      }
 
       function openCardPage(event) {
         if (event) event.preventDefault();
 
         previousTitle = document.title;
+        currentPage = "donations";
+
         cardPage.classList.add("active");
+        noncashPage.classList.remove("active");
+
         cardPage.setAttribute("aria-hidden", "false");
+        noncashPage.setAttribute("aria-hidden", "true");
+
         mainContent.setAttribute("aria-hidden", "true");
         mainFooter.setAttribute("aria-hidden", "true");
-        document.body.classList.add("page-open");
-        document.title = "شماره کارت هیئت | محفل اشک خدام الشهدا";
 
-        history.pushState({ cardPage: true }, "", "#donate-page");
+        document.body.classList.add("page-open");
+        document.title = "کمک به هیئت | محفل اشک خدام الشهدا";
+
+        history.pushState({ page: "donations" }, "", "#donate-page");
         window.scrollTo(0, 0);
         backButton.focus();
       }
 
-      function closeCardPage() {
-        cardPage.classList.remove("active");
-        cardPage.setAttribute("aria-hidden", "true");
-        mainContent.setAttribute("aria-hidden", "false");
-        mainFooter.setAttribute("aria-hidden", "false");
-        document.body.classList.remove("page-open");
-        document.title = previousTitle;
+      function openNoncashPage() {
+        currentPage = "noncash";
 
-        if (window.location.hash === "#donate-page") {
+        cardPage.classList.remove("active");
+        noncashPage.classList.add("active");
+
+        cardPage.setAttribute("aria-hidden", "true");
+        noncashPage.setAttribute("aria-hidden", "false");
+
+        mainContent.setAttribute("aria-hidden", "true");
+        mainFooter.setAttribute("aria-hidden", "true");
+
+        document.body.classList.add("page-open");
+        document.title = "نذورات غیرنقدی | محفل اشک خدام الشهدا";
+
+        history.pushState({ page: "noncash" }, "", "#noncash-donations");
+        window.scrollTo(0, 0);
+        backToDonationsButton.focus();
+      }
+
+      function closeCardPage() {
+        hideAllPages();
+        currentPage = "home";
+
+        if (
+          window.location.hash === "#donate-page" ||
+          window.location.hash === "#noncash-donations"
+        ) {
           history.replaceState(
             null,
             "",
@@ -1086,6 +1314,26 @@
 
         const donateButton = document.querySelector("[data-open-card-page]");
         if (donateButton) donateButton.focus();
+      }
+
+      function backToDonations() {
+        currentPage = "donations";
+
+        noncashPage.classList.remove("active");
+        cardPage.classList.add("active");
+
+        noncashPage.setAttribute("aria-hidden", "true");
+        cardPage.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("page-open");
+        document.title = "کمک به هیئت | محفل اشک خدام الشهدا";
+
+        if (window.location.hash === "#noncash-donations") {
+          history.replaceState({ page: "donations" }, "", "#donate-page");
+        }
+
+        window.scrollTo(0, 0);
+        openNoncashButton.focus();
       }
 
       async function copyCardNumber() {
@@ -1108,7 +1356,6 @@
             document.body.removeChild(input);
 
             if (!successful) throw new Error("Copy failed");
-
           }
 
           copyButtonText.textContent = "✓ شماره کارت کپی شد";
@@ -1128,22 +1375,50 @@
         button.addEventListener("click", openCardPage);
       });
 
+      openNoncashButton.addEventListener("click", openNoncashPage);
       backButton.addEventListener("click", closeCardPage);
+      backToDonationsButton.addEventListener("click", backToDonations);
       copyButton.addEventListener("click", copyCardNumber);
 
-      window.addEventListener("popstate", () => {
-        if (cardPage.classList.contains("active")) {
-          closeCardPage();
+      window.addEventListener("popstate", (event) => {
+        if (event.state && event.state.page === "noncash") {
+          openNoncashPage();
+        } else if (
+          event.state &&
+          event.state.page === "donations"
+        ) {
+          currentPage = "donations";
+          noncashPage.classList.remove("active");
+          cardPage.classList.add("active");
+
+          noncashPage.setAttribute("aria-hidden", "true");
+          cardPage.setAttribute("aria-hidden", "false");
+
+          mainContent.setAttribute("aria-hidden", "true");
+          mainFooter.setAttribute("aria-hidden", "true");
+
+          document.body.classList.add("page-open");
+          document.title = "کمک به هیئت | محفل اشک خدام الشهدا";
+        } else {
+          hideAllPages();
+          currentPage = "home";
         }
       });
 
       window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && cardPage.classList.contains("active")) {
-          closeCardPage();
+        if (event.key === "Escape") {
+          if (currentPage === "noncash") {
+            backToDonations();
+          } else if (currentPage === "donations") {
+            closeCardPage();
+          }
         }
       });
 
-      if (window.location.hash === "#donate-page") {
+      if (
+        window.location.hash === "#donate-page" ||
+        window.location.hash === "#noncash-donations"
+      ) {
         history.replaceState(
           null,
           "",
