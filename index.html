@@ -155,25 +155,27 @@
       background: rgba(216,182,106,.1);
     }
 
+    /* دکمه پررنگ کمک به هیئت، بدون قلب */
     .donate-nav {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 7px;
       white-space: nowrap;
-      background: linear-gradient(135deg, #f2dba0, #d8b66a);
-      color: #172319 !important;
+      background: linear-gradient(135deg, #ffe9a8, #d8b66a);
+      color: #071a14 !important;
       border-radius: 9px;
-      padding: 8px 13px !important;
-      font-weight: bold;
-      border: 1px solid var(--gold-light);
-      box-shadow: 0 3px 15px rgba(216,182,106,.12);
+      padding: 9px 15px !important;
+      font-weight: 900;
+      font-size: 13px;
+      border: 2px solid #f2dba0;
+      box-shadow: 0 0 12px rgba(216,182,106,.35);
       transition: transform .2s, box-shadow .2s;
     }
 
     .donate-nav:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 18px rgba(216,182,106,.22);
+      box-shadow: 0 0 20px rgba(216,182,106,.55);
     }
 
     .hero {
@@ -412,43 +414,6 @@
       margin-top: 17px;
     }
 
-    .donate-section {
-      background:
-        radial-gradient(ellipse at center, rgba(216,182,106,.09), transparent 72%);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .donate-box {
-      max-width: 820px;
-      margin-inline: auto;
-      padding: 34px 24px;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, rgba(216,182,106,.13), transparent 75%),
-        linear-gradient(145deg, #143b2b, #0b2118);
-      border: 1px solid rgba(216,182,106,.45);
-      border-radius: 18px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.12);
-    }
-
-    .donate-symbol {
-      font-size: 36px;
-      color: var(--gold);
-      margin-bottom: 5px;
-    }
-
-    .donate-box h2 {
-      color: var(--gold-light);
-      font-size: clamp(21px, 3vw, 28px);
-      margin-bottom: 8px;
-    }
-
-    .donate-box > p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
     .contact-section {
       background:
         radial-gradient(ellipse at center, rgba(36,81,58,.25), transparent 70%);
@@ -508,7 +473,7 @@
       color: var(--gold);
     }
 
-    /* صفحه جداگانه شماره کارت */
+    /* صفحه شماره کارت */
     .card-page {
       position: fixed;
       inset: 0;
@@ -649,7 +614,7 @@
       }
 
       .donate-nav {
-        padding: 7px 9px !important;
+        padding: 8px 12px !important;
       }
     }
 
@@ -702,9 +667,13 @@
 
       .nav-links .donate-nav {
         grid-column: 1 / -1;
-        min-height: 38px;
-        font-size: 12px;
+        min-height: 42px;
+        font-size: 13px;
         margin-top: 3px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffe9a8, #d8b66a);
+        border: 2px solid #f2dba0;
+        box-shadow: 0 0 14px rgba(216,182,106,.35);
       }
 
       .hero {
@@ -866,13 +835,12 @@
 </head>
 
 <body>
-
   <header>
     <div class="container nav">
       <a class="brand" href="#home" aria-label="صفحه اصلی">
         <img
           class="brand-icon"
-          src="images/legp.jfif"
+          src="./images/legp.jfif"
           alt="لوگوی محفل اشک خدام الشهدا"
         >
         <span>محفل اشک خدام الشهدا</span>
@@ -883,7 +851,9 @@
         <a href="#about">درباره هیئت</a>
         <a href="#events">برنامه هفتگی</a>
         <a href="#contact">ارتباط با ما</a>
-        <a class="donate-nav" href="#donate-page" data-open-card-page>♡ کمک به هیئت</a>
+        <a class="donate-nav" href="#donate-page" data-open-card-page>
+          کمک به هیئت
+        </a>
       </nav>
     </div>
   </header>
@@ -893,7 +863,7 @@
       <div class="container hero-content">
         <img
           class="hero-logo"
-          src="images/legp.jfif"
+          src="./images/legp.jfif"
           alt="نشان محفل اشک خدام الشهدا"
         >
 
@@ -1027,7 +997,7 @@
   >
     <div class="container card-page-inner">
       <div class="card-page-box">
-        <div class="card-page-symbol" aria-hidden="true">♡</div>
+        <div class="card-page-symbol" aria-hidden="true">✦</div>
 
         <h1 id="cardPageTitle">کمک به محفل اشک خدام الشهدا</h1>
 
@@ -1106,7 +1076,11 @@
         document.title = previousTitle;
 
         if (window.location.hash === "#donate-page") {
-          history.replaceState(null, "", window.location.pathname + window.location.search);
+          history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+          );
         }
 
         const donateButton = document.querySelector("[data-open-card-page]");
@@ -1141,7 +1115,8 @@
           copyButtonText.textContent = "✓ شماره کارت کپی شد";
           copyMessage.textContent = "شماره کارت با موفقیت کپی شد.";
         } catch (error) {
-          copyMessage.textContent = "کپی خودکار انجام نشد؛ شماره کارت را دستی انتخاب و کپی کنید.";
+          copyMessage.textContent =
+            "کپی خودکار انجام نشد؛ شماره کارت را دستی انتخاب و کپی کنید.";
         }
 
         messageTimer = setTimeout(() => {
@@ -1170,10 +1145,13 @@
       });
 
       if (window.location.hash === "#donate-page") {
-        history.replaceState(null, "", window.location.pathname + window.location.search);
+        history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.search
+        );
       }
     })();
   </script>
-
 </body>
 </html>
