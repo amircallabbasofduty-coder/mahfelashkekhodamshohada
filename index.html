@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09251d">
+  <meta name="theme-color" content="#071a14">
 
   <title>محفل اشک خدام الشهدا</title>
-  <meta name="description" content="پایگاه رسمی محفل اشک خدام الشهدا؛ معرفی هیئت، مراسم و اطلاعیه‌ها">
+  <meta name="description" content="پایگاه رسمی محفل اشک خدام الشهدا؛ مراسم، اطلاعیه‌ها و اخبار هیئت">
 
   <style>
     :root {
@@ -18,7 +18,7 @@
       --gold-light: #f2dba0;
       --text: #f8f5ec;
       --muted: #b7c5bc;
-      --border: rgba(216,182,106,.24);
+      --border: rgba(216,182,106,.25);
     }
 
     * {
@@ -29,6 +29,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
 
     body {
@@ -70,14 +71,15 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: bold;
       color: var(--gold-light);
-      font-size: 17px;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .brand-icon {
       width: 45px;
       height: 45px;
+      flex-shrink: 0;
       border: 1px solid var(--gold);
       border-radius: 50%;
       display: grid;
@@ -87,7 +89,8 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 22px;
+      flex-wrap: wrap;
       font-size: 13px;
       color: var(--muted);
     }
@@ -116,6 +119,7 @@
       position: absolute;
       color: rgba(216,182,106,.13);
       font-size: 130px;
+      pointer-events: none;
     }
 
     .hero::before {
@@ -138,7 +142,6 @@
     .eyebrow {
       color: var(--gold);
       font-size: 13px;
-      letter-spacing: 1px;
       margin-bottom: 16px;
     }
 
@@ -157,29 +160,35 @@
     }
 
     .button {
-      display: inline-block;
-      padding: 10px 25px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
       border-radius: 8px;
       background: var(--gold);
       color: #172319;
       font-weight: bold;
       font-size: 14px;
       transition: .2s;
+      border: 1px solid var(--gold);
+      cursor: pointer;
     }
 
     .button:hover {
       background: var(--gold-light);
+      border-color: var(--gold-light);
       transform: translateY(-2px);
     }
 
     .button-outline {
       background: transparent;
       color: var(--gold-light);
-      border: 1px solid var(--gold);
       margin-right: 8px;
     }
 
     .button-outline:hover {
+      color: var(--gold-light);
       background: rgba(216,182,106,.1);
     }
 
@@ -278,13 +287,9 @@
       margin-top: 5px;
     }
 
-    .empty-events {
-      text-align: center;
-      color: var(--muted);
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      grid-column: 1 / -1;
+    .contact-section {
+      background:
+        radial-gradient(ellipse at center, rgba(36,81,58,.25), transparent 70%);
     }
 
     .contact-box {
@@ -292,18 +297,38 @@
       background: linear-gradient(135deg, #143b2b, #0b2118);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 35px 20px;
+      padding: 40px 22px;
+    }
+
+    .contact-symbol {
+      color: var(--gold);
+      font-size: 34px;
+      margin-bottom: 8px;
     }
 
     .contact-box h2 {
       color: var(--gold-light);
+      font-size: 25px;
       margin-bottom: 10px;
     }
 
     .contact-box p {
       color: var(--muted);
-      margin-bottom: 22px;
+      margin: 0 auto 24px;
+      max-width: 600px;
       font-size: 14px;
+    }
+
+    .rubika-button {
+      font-size: 15px;
+      padding: 12px 27px;
+    }
+
+    .contact-note {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 15px;
     }
 
     footer {
@@ -325,8 +350,7 @@
       }
 
       .nav-links {
-        gap: 16px;
-        flex-wrap: wrap;
+        gap: 12px 17px;
         justify-content: center;
       }
 
@@ -356,7 +380,12 @@
       }
 
       .button {
-        padding: 9px 17px;
+        padding: 9px 15px;
+        font-size: 13px;
+      }
+
+      .contact-box h2 {
+        font-size: 22px;
       }
     }
   </style>
@@ -366,12 +395,12 @@
 
   <header>
     <div class="container nav">
-      <a class="brand" href="#home">
+      <a class="brand" href="#home" aria-label="صفحه اصلی">
         <span class="brand-icon">ع</span>
         <span>محفل اشک خدام الشهدا</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="منوی اصلی">
         <a href="#home">صفحه اصلی</a>
         <a href="#about">درباره هیئت</a>
         <a href="#events">مراسم و اطلاعیه‌ها</a>
@@ -393,8 +422,13 @@
           و گردهمایی عاشقان حضرت اباعبدالله الحسین علیه‌السلام.
         </p>
 
-        <a class="button" href="#events">مشاهده مراسم و اطلاعیه‌ها</a>
-        <a class="button button-outline" href="#about">درباره هیئت</a>
+        <a class="button" href="#events">
+          مشاهده مراسم و اطلاعیه‌ها
+        </a>
+
+        <a class="button button-outline" href="#about">
+          درباره هیئت
+        </a>
       </div>
     </section>
 
@@ -429,15 +463,15 @@
 
         <div class="event-grid">
 
-          <!-- برای افزودن اطلاعیه جدید، یک کارت را کپی و ویرایش کنید -->
-
           <article class="event-card">
             <span class="event-label">اطلاعیه</span>
             <h3>اطلاعیه‌های هیئت</h3>
             <p>
               برنامه‌های جدید هیئت از طریق همین بخش اعلام خواهد شد.
             </p>
-            <p>برای اطلاع از جزئیات مراسم، اطلاعیه‌های جدید را دنبال کنید.</p>
+            <p>
+              برای اطلاع از جزئیات مراسم، اطلاعیه‌های جدید را دنبال کنید.
+            </p>
           </article>
 
           <article class="event-card">
@@ -447,28 +481,40 @@
               اطلاعات مربوط به زمان، مکان، سخنران و مداح
               در این بخش قرار می‌گیرد.
             </p>
-            <p>جزئیات هر برنامه پس از اعلام رسمی منتشر می‌شود.</p>
+            <p>
+              جزئیات هر برنامه پس از اعلام رسمی منتشر می‌شود.
+            </p>
           </article>
 
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="contact-section" id="contact">
       <div class="container">
         <div class="contact-box">
+          <div class="contact-symbol">✦</div>
+
           <h2>همراه محفل اشک خدام الشهدا باشید</h2>
 
           <p>
-            برای دریافت تازه‌ترین اطلاعیه‌ها و اخبار هیئت،
-            از راه‌های ارتباطی رسمی ما استفاده کنید.
+            برای دریافت تازه‌ترین اطلاعیه‌ها، اخبار و برنامه‌های
+            هیئت، به کانال رسمی ما در روبیکا بپیوندید.
           </p>
 
-          <!-- لینک کانال روبیکا را بعداً اینجا قرار می‌دهیم -->
-
-          <a class="button" href="#events">
-            مشاهده اطلاعیه‌ها
+          <a
+            class="button rubika-button"
+            href="https://rubika.ir/mahfel_ashk_khodam_shohada/BJDBEJACJBFADCAA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ورود به کانال روبیکا
+            <span aria-hidden="true">↗</span>
           </a>
+
+          <span class="contact-note">
+            محفل اشک خدام الشهدا | کانال رسمی روبیکا
+          </span>
         </div>
       </div>
     </section>
@@ -483,4 +529,3 @@
 
 </body>
 </html>
-
