@@ -89,6 +89,7 @@
       font-size: 14px;
       font-weight: bold;
       min-width: 0;
+      flex-shrink: 0;
     }
 
     .brand-icon {
@@ -102,18 +103,25 @@
       background: var(--surface);
     }
 
+    /* تمام گزینه‌های منو در یک خط */
     .nav-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: clamp(8px, 1.3vw, 16px);
+      flex-wrap: nowrap;
+      white-space: nowrap;
       color: var(--muted);
-      font-size: 12px;
+      font-size: clamp(10px, 1vw, 12px);
+      min-width: 0;
     }
 
     .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 6px 0;
+      flex-shrink: 0;
       transition: color .2s;
     }
 
@@ -157,17 +165,12 @@
 
     /* دکمه پررنگ کمک به هیئت، بدون قلب */
     .donate-nav {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      white-space: nowrap;
       background: linear-gradient(135deg, #ffe9a8, #d8b66a);
       color: #071a14 !important;
       border-radius: 9px;
-      padding: 9px 15px !important;
+      padding: 7px 12px !important;
       font-weight: 900;
-      font-size: 13px;
+      font-size: inherit;
       border: 2px solid #f2dba0;
       box-shadow: 0 0 12px rgba(216,182,106,.35);
       transition: transform .2s, box-shadow .2s;
@@ -604,17 +607,33 @@
       border-color: var(--gold-light);
     }
 
+    /* تبلت و موبایل: گزینه‌های منو همچنان یک‌خطی می‌مانند */
     @media (max-width: 850px) {
+      .container {
+        width: 96%;
+      }
+
       .nav {
-        gap: 10px;
+        gap: 8px;
+      }
+
+      .brand {
+        gap: 6px;
+        font-size: 11px;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
       }
 
       .nav-links {
-        gap: 10px;
+        gap: 8px;
+        font-size: 10px;
       }
 
       .donate-nav {
-        padding: 8px 12px !important;
+        padding: 6px 8px !important;
       }
     }
 
@@ -625,14 +644,14 @@
       }
 
       .container {
-        width: 91%;
+        width: 94%;
       }
 
       .nav {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding: 10px 0 9px;
+        padding: 8px 0;
       }
 
       .brand {
@@ -641,39 +660,44 @@
       }
 
       .brand-icon {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
       }
 
+      /* چهار لینک اول و دکمه کمک همگی در یک خط */
       .nav-links {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 4px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
         width: 100%;
-        text-align: center;
-        font-size: 10px;
+        white-space: nowrap;
+        font-size: clamp(8px, 2.35vw, 11px);
       }
 
       .nav-links a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 36px;
+        display: inline-flex;
+        flex: 0 1 auto;
+        min-width: 0;
+        min-height: 34px;
         padding: 4px 2px;
-        line-height: 1.6;
-        border-radius: 7px;
-        background: rgba(255,255,255,.025);
+        line-height: 1.4;
+        border-radius: 6px;
+        background: transparent;
       }
 
       .nav-links .donate-nav {
-        grid-column: 1 / -1;
-        min-height: 42px;
-        font-size: 13px;
-        margin-top: 3px;
+        flex: 0 0 auto;
+        min-height: 34px;
+        padding: 5px 7px !important;
+        margin-top: 0;
+        font-size: clamp(8px, 2.4vw, 11px);
         font-weight: 900;
         background: linear-gradient(135deg, #ffe9a8, #d8b66a);
         border: 2px solid #f2dba0;
-        box-shadow: 0 0 14px rgba(216,182,106,.35);
+        box-shadow: 0 0 10px rgba(216,182,106,.3);
       }
 
       .hero {
@@ -801,9 +825,19 @@
       }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 370px) {
+      .container {
+        width: 98%;
+      }
+
       .nav-links {
-        font-size: 9px;
+        gap: 3px;
+        font-size: 8px;
+      }
+
+      .nav-links .donate-nav {
+        padding: 4px 5px !important;
+        font-size: 8px;
       }
 
       .brand {
@@ -851,9 +885,7 @@
         <a href="#about">درباره هیئت</a>
         <a href="#events">برنامه هفتگی</a>
         <a href="#contact">ارتباط با ما</a>
-        <a class="donate-nav" href="#donate-page" data-open-card-page>
-          کمک به هیئت
-        </a>
+        <a class="donate-nav" href="#donate-page" data-open-card-page>کمک به هیئت</a>
       </nav>
     </div>
   </header>
@@ -877,13 +909,8 @@
           قرائت ادعیه و زنده نگه داشتن یاد و نام شهدا.
         </p>
 
-        <a class="button" href="#events">
-          مشاهده برنامه هفتگی
-        </a>
-
-        <a class="button button-outline" href="#about">
-          درباره هیئت
-        </a>
+        <a class="button" href="#events">مشاهده برنامه هفتگی</a>
+        <a class="button button-outline" href="#about">درباره هیئت</a>
       </div>
     </section>
 
@@ -896,9 +923,7 @@
 
         <div class="about-card">
           <div class="about-symbol">۞</div>
-
           <h3>به محفل ما خوش آمدید</h3>
-
           <p>
             محفل اشک خدام الشهدا، متوسلین به حضرت زهرا
             سلام الله علیها، محفلی برای برگزاری مجالس
@@ -918,7 +943,6 @@
         <div class="event-grid">
           <article class="event-card featured-event">
             <span class="event-label">مراسم هفتگی</span>
-
             <h3>محفل اشک خدام الشهدا</h3>
 
             <p class="event-subtitle">
@@ -927,25 +951,14 @@
 
             <div class="event-divider"></div>
 
-            <p class="event-weekly">
-              هر هفته #سه‌شنبه‌شب‌ها
-            </p>
-
-            <p class="event-prayer">
-              قرائت دعای توسل
-            </p>
+            <p class="event-weekly">هر هفته #سه‌شنبه‌شب‌ها</p>
+            <p class="event-prayer">قرائت دعای توسل</p>
 
             <div class="event-divider"></div>
 
             <p class="event-location-title">مکان برگزاری</p>
-
-            <p class="event-location">
-              امام رضا ۷، منزل مرحوم آقای سالاری
-            </p>
-
-            <p class="event-ending">
-              اجرکم عند الله
-            </p>
+            <p class="event-location">امام رضا ۷، منزل مرحوم آقای سالاری</p>
+            <p class="event-ending">اجرکم عند الله</p>
           </article>
         </div>
       </div>
@@ -955,7 +968,6 @@
       <div class="container">
         <div class="contact-box">
           <div class="contact-symbol">✦</div>
-
           <h2>همراه محفل اشک خدام الشهدا باشید</h2>
 
           <p>
@@ -973,9 +985,7 @@
             <span aria-hidden="true">↗</span>
           </a>
 
-          <span class="contact-note">
-            @mahfel_ashk_khodam_shohada
-          </span>
+          <span class="contact-note">@mahfel_ashk_khodam_shohada</span>
         </div>
       </div>
     </section>
@@ -988,7 +998,6 @@
     </p>
   </footer>
 
-  <!-- صفحه جداگانه کمک مالی و شماره کارت -->
   <section
     class="card-page"
     id="cardPage"
@@ -1012,11 +1021,7 @@
           <strong id="cardNumber">5022291557168471</strong>
         </div>
 
-        <button
-          class="copy-button"
-          id="copyCardButton"
-          type="button"
-        >
+        <button class="copy-button" id="copyCardButton" type="button">
           <span aria-hidden="true">▣</span>
           <span id="copyButtonText">کپی شماره کارت</span>
         </button>
@@ -1025,11 +1030,7 @@
           با سپاس از نذورات و کمک‌های شما
         </span>
 
-        <button
-          class="button back-button"
-          id="backToHome"
-          type="button"
-        >
+        <button class="button back-button" id="backToHome" type="button">
           <span aria-hidden="true">↩</span>
           بازگشت به صفحه اصلی
         </button>
@@ -1089,7 +1090,6 @@
 
       async function copyCardNumber() {
         const number = cardNumberElement.textContent.trim();
-
         clearTimeout(messageTimer);
 
         try {
@@ -1107,9 +1107,8 @@
             const successful = document.execCommand("copy");
             document.body.removeChild(input);
 
-            if (!successful) {
-              throw new Error("Copy failed");
-            }
+            if (!successful) throw new Error("Copy failed");
+
           }
 
           copyButtonText.textContent = "✓ شماره کارت کپی شد";
