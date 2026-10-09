@@ -253,6 +253,35 @@
       font-size: 14px;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .hero-actions .button {
+      width: 100%;
+      max-width: 310px;
+      min-height: 48px;
+      margin: 0;
+    }
+
+    .hero-donate-button {
+      background: linear-gradient(135deg, #ffe9a8, #d8b66a);
+      color: #071a14;
+      border: 2px solid var(--gold-light);
+      box-shadow: 0 0 16px rgba(216,182,106,.25);
+      font-weight: 900;
+    }
+
+    .hero-donate-button:hover {
+      background: var(--gold-light);
+      box-shadow: 0 0 22px rgba(216,182,106,.4);
+    }
+
     section {
       padding: 65px 0;
     }
@@ -838,11 +867,11 @@
         margin-bottom: 20px;
       }
 
-      .hero .button {
+      .hero-actions .button {
         display: flex;
         width: 100%;
         max-width: 310px;
-        margin: 8px auto 0;
+        margin: 0;
         min-height: 46px;
       }
 
@@ -1018,8 +1047,15 @@
           محفلی برای انس با اهل‌بیت علیهم‌السلام،
           قرائت ادعیه و زنده نگه داشتن یاد و نام شهدا.
         </p>
-        <a class="button" href="#events">مشاهده برنامه هفتگی</a>
-        <a class="button button-outline" href="#about">درباره هیئت</a>
+
+        <div class="hero-actions">
+          <a class="button" href="#events">مشاهده برنامه هفتگی</a>
+          <a class="button button-outline" href="#about">درباره هیئت</a>
+          <button class="button hero-donate-button" type="button" data-open-card-page>
+            <span aria-hidden="true">✦</span>
+            کمک به هیئت
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1092,7 +1128,6 @@
     <p><span>محفل اشک خدام الشهدا</span> | تمامی حقوق محفوظ است.</p>
   </footer>
 
-  <!-- صفحه کمک نقدی -->
   <section class="card-page" id="cardPage" aria-labelledby="cardPageTitle" aria-hidden="true">
     <div class="container card-page-inner">
       <div class="card-page-box">
@@ -1140,7 +1175,6 @@
     </div>
   </section>
 
-  <!-- صفحه شماره تماس نذورات غیرنقدی -->
   <section class="noncash-page" id="noncashPage" aria-labelledby="noncashTitle" aria-hidden="true">
     <div class="container noncash-page-inner">
       <div class="noncash-box">
@@ -1224,7 +1258,10 @@
         document.body.classList.add("page-open");
         document.title = "کمک به هیئت | محفل اشک خدام الشهدا";
 
-        history.pushState({ page: "donations" }, "", "#donate-page");
+        if (window.location.hash !== "#donate-page") {
+          history.pushState({ page: "donations" }, "", "#donate-page");
+        }
+
         window.scrollTo(0, 0);
         backButton.focus();
       }
