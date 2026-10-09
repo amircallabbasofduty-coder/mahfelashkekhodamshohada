@@ -5,20 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#071a14">
-
   <title>محفل اشک خدام الشهدا</title>
-  <meta name="description" content="محفل اشک خدام الشهدا؛ متوسلین به حضرت زهرا سلام الله علیها. اطلاعیه مراسم هفتگی قرائت دعای توسل.">
+  <meta name="description" content="محفل اشک خدام الشهدا؛ متوسلین به حضرت زهرا سلام الله علیها">
 
   <style>
     :root {
       --bg: #071a14;
       --surface: #0d2a20;
-      --surface2: #123629;
+      --surface2: #143b2b;
       --gold: #d8b66a;
       --gold-light: #f2dba0;
       --text: #f8f5ec;
       --muted: #bdc9c1;
-      --border: rgba(216,182,106,.25);
+      --border: rgba(216,182,106,.28);
     }
 
     * {
@@ -58,11 +57,11 @@
     }
 
     header {
-      background: rgba(7,26,20,.97);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 10;
+      background: rgba(7,26,20,.97);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
     }
 
@@ -80,8 +79,8 @@
       align-items: center;
       gap: 10px;
       color: var(--gold-light);
-      font-weight: bold;
       font-size: 14px;
+      font-weight: bold;
       min-width: 0;
     }
 
@@ -89,10 +88,10 @@
       width: 45px;
       height: 45px;
       flex-shrink: 0;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
       object-fit: contain;
       padding: 3px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
       background: var(--surface);
     }
 
@@ -102,8 +101,8 @@
       justify-content: center;
       gap: 18px;
       flex-wrap: wrap;
-      font-size: 12px;
       color: var(--muted);
+      font-size: 12px;
     }
 
     .nav-links a {
@@ -278,8 +277,10 @@
 
     .event-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: 18px;
+      max-width: 800px;
+      margin-inline: auto;
     }
 
     .event-card {
@@ -287,13 +288,7 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px;
-      transition: border-color .2s, transform .2s;
       min-width: 0;
-    }
-
-    .event-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
     }
 
     .event-label {
@@ -307,21 +302,7 @@
       margin-bottom: 12px;
     }
 
-    .event-card h3 {
-      font-size: 19px;
-      color: var(--gold-light);
-      margin-bottom: 10px;
-    }
-
-    .event-card p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 7px;
-    }
-
-    /* اطلاعیه ویژه دعای توسل */
     .featured-event {
-      grid-column: 1 / -1;
       position: relative;
       overflow: hidden;
       padding: 30px;
@@ -356,12 +337,13 @@
       font-size: clamp(21px, 3vw, 27px);
       line-height: 1.9;
       margin-bottom: 3px;
+      color: var(--gold-light);
     }
 
     .event-subtitle {
-      color: var(--gold-light) !important;
-      font-size: 14px !important;
-      margin-top: 0 !important;
+      color: var(--gold-light);
+      font-size: 14px;
+      margin-top: 0;
     }
 
     .event-divider {
@@ -373,33 +355,33 @@
     }
 
     .event-weekly {
-      color: var(--gold-light) !important;
-      font-size: 17px !important;
+      color: var(--gold-light);
+      font-size: 17px;
       font-weight: bold;
     }
 
     .event-prayer {
-      color: var(--text) !important;
-      font-size: 19px !important;
+      color: var(--text);
+      font-size: 19px;
       font-weight: bold;
-      margin-top: 0 !important;
+      margin-top: 0;
     }
 
     .event-location-title {
-      color: var(--gold-light) !important;
-      font-size: 13px !important;
+      color: var(--gold-light);
+      font-size: 13px;
       font-weight: bold;
     }
 
     .event-location {
-      color: var(--text) !important;
-      font-size: 14px !important;
+      color: var(--text);
+      font-size: 14px;
     }
 
     .event-ending {
-      color: var(--gold) !important;
-      font-size: 15px !important;
-      margin-top: 17px !important;
+      color: var(--gold);
+      font-size: 15px;
+      margin-top: 17px;
     }
 
     .contact-section {
@@ -461,7 +443,6 @@
       color: var(--gold);
     }
 
-    /* بهینه‌سازی برای گوشی */
     @media (max-width: 650px) {
       body {
         font-size: 14px;
@@ -491,7 +472,7 @@
 
       .nav-links {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 4px;
         width: 100%;
         text-align: center;
@@ -574,27 +555,9 @@
         font-size: 13px;
       }
 
-      .event-grid {
-        grid-template-columns: 1fr;
-        gap: 13px;
-      }
-
-      .event-card {
-        padding: 21px 17px;
-        border-radius: 13px;
-      }
-
-      .event-card h3 {
-        font-size: 17px;
-      }
-
-      .event-card p {
-        font-size: 12px;
-      }
-
       .featured-event {
-        grid-column: auto;
         padding: 25px 16px;
+        border-radius: 13px;
       }
 
       .featured-event h3 {
@@ -602,19 +565,19 @@
       }
 
       .event-subtitle {
-        font-size: 12px !important;
+        font-size: 12px;
       }
 
       .event-weekly {
-        font-size: 15px !important;
+        font-size: 15px;
       }
 
       .event-prayer {
-        font-size: 18px !important;
+        font-size: 18px;
       }
 
       .event-location {
-        font-size: 13px !important;
+        font-size: 13px;
       }
 
       .contact-box {
@@ -688,7 +651,7 @@
       <nav class="nav-links" aria-label="منوی اصلی">
         <a href="#home">صفحه اصلی</a>
         <a href="#about">درباره هیئت</a>
-        <a href="#events">مراسم</a>
+        <a href="#events">برنامه هفتگی</a>
         <a href="#contact">ارتباط با ما</a>
       </nav>
     </div>
@@ -715,7 +678,7 @@
         </p>
 
         <a class="button" href="#events">
-          مشاهده مراسم و اطلاعیه‌ها
+          مشاهده برنامه هفتگی
         </a>
 
         <a class="button button-outline" href="#about">
@@ -740,8 +703,6 @@
             محفل اشک خدام الشهدا، متوسلین به حضرت زهرا
             سلام الله علیها، محفلی برای برگزاری مجالس
             اهل‌بیت علیهم‌السلام، قرائت ادعیه و نشر معارف دینی است.
-            در این پایگاه می‌توانید از برنامه‌ها و اطلاعیه‌های هیئت
-            مطلع شوید.
           </p>
         </div>
       </div>
@@ -750,12 +711,11 @@
     <section class="events" id="events">
       <div class="container">
         <div class="section-heading">
-          <h2>مراسم و اطلاعیه‌ها</h2>
-          <p>برنامه‌های محفل اشک خدام الشهدا</p>
+          <h2>برنامه هفتگی</h2>
+          <p>محفل اشک خدام الشهدا</p>
         </div>
 
         <div class="event-grid">
-
           <article class="event-card featured-event">
             <span class="event-label">مراسم هفتگی</span>
 
@@ -787,37 +747,6 @@
               اجرکم عند الله
             </p>
           </article>
-
-          <article class="event-card">
-            <span class="event-label">اطلاعیه</span>
-
-            <h3>اطلاعیه‌های هیئت</h3>
-
-            <p>
-              برنامه‌های جدید و اطلاعیه‌های محفل اشک خدام الشهدا
-              از طریق این بخش منتشر خواهند شد.
-            </p>
-
-            <p>
-              برای اطلاع از آخرین اخبار، کانال رسمی هیئت را دنبال کنید.
-            </p>
-          </article>
-
-          <article class="event-card">
-            <span class="event-label">برنامه‌های مذهبی</span>
-
-            <h3>مراسم و مجالس</h3>
-
-            <p>
-              جزئیات مراسم، برنامه‌های مناسبتی و سایر مجالس هیئت
-              در این بخش قرار می‌گیرند.
-            </p>
-
-            <p>
-              اطلاعیه هر مراسم پس از اعلام رسمی منتشر خواهد شد.
-            </p>
-          </article>
-
         </div>
       </div>
     </section>
@@ -830,7 +759,7 @@
           <h2>همراه محفل اشک خدام الشهدا باشید</h2>
 
           <p>
-            برای دریافت اطلاعیه‌ها، اخبار و برنامه‌های هیئت،
+            برای دریافت اخبار و برنامه‌های هیئت،
             به کانال رسمی ما در روبیکا بپیوندید.
           </p>
 
