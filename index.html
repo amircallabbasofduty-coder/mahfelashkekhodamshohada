@@ -1,1 +1,486 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09251d">
+
+  <title>محفل اشک خدام الشهدا</title>
+  <meta name="description" content="پایگاه رسمی محفل اشک خدام الشهدا؛ معرفی هیئت، مراسم و اطلاعیه‌ها">
+
+  <style>
+    :root {
+      --bg: #071a14;
+      --surface: #0d2a20;
+      --surface2: #123629;
+      --gold: #d8b66a;
+      --gold-light: #f2dba0;
+      --text: #f8f5ec;
+      --muted: #b7c5bc;
+      --border: rgba(216,182,106,.24);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: rgba(7,26,20,.96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      color: var(--gold-light);
+      font-size: 17px;
+    }
+
+    .brand-icon {
+      width: 45px;
+      height: 45px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      min-height: 490px;
+      padding: 85px 0;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #24513a 0%, transparent 65%),
+        linear-gradient(145deg, #0d2a20, #071a14 75%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "✦";
+      position: absolute;
+      color: rgba(216,182,106,.13);
+      font-size: 130px;
+    }
+
+    .hero::before {
+      top: 20px;
+      right: 4%;
+    }
+
+    .hero::after {
+      bottom: 0;
+      left: 4%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      color: var(--gold-light);
+      font-size: clamp(28px, 5vw, 48px);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #172319;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .button:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      margin-right: 8px;
+    }
+
+    .button-outline:hover {
+      background: rgba(216,182,106,.1);
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: 27px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .about-card {
+      background: linear-gradient(135deg, var(--surface2), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 35px;
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about-symbol {
+      color: var(--gold);
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .about-card h3 {
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .events {
+      background: #091f17;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+      transition: .2s;
+    }
+
+    .event-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .event-label {
+      display: inline-block;
+      color: var(--gold-light);
+      background: rgba(216,182,106,.1);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 2px 10px;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .event-card h3 {
+      font-size: 19px;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .event-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .empty-events {
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      grid-column: 1 / -1;
+    }
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, #143b2b, #0b2118);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 35px 20px;
+    }
+
+    .contact-box h2 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer span {
+      color: var(--gold);
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: 420px;
+        padding: 65px 0;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-heading h2 {
+        font-size: 23px;
+      }
+
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card {
+        padding: 25px 18px;
+      }
+
+      .button {
+        padding: 9px 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-icon">ع</span>
+        <span>محفل اشک خدام الشهدا</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">صفحه اصلی</a>
+        <a href="#about">درباره هیئت</a>
+        <a href="#events">مراسم و اطلاعیه‌ها</a>
+        <a href="#contact">ارتباط با ما</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">پایگاه رسمی هیئت مذهبی</div>
+
+        <h1>محفل اشک خدام الشهدا</h1>
+
+        <p>
+          محفل انس با اهل‌بیت علیهم‌السلام؛
+          پایگاهی برای اطلاع‌رسانی مراسم، نشر معارف دینی
+          و گردهمایی عاشقان حضرت اباعبدالله الحسین علیه‌السلام.
+        </p>
+
+        <a class="button" href="#events">مشاهده مراسم و اطلاعیه‌ها</a>
+        <a class="button button-outline" href="#about">درباره هیئت</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>درباره هیئت</h2>
+          <p>آشنایی با محفل اشک خدام الشهدا</p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-symbol">۞</div>
+
+          <h3>به محفل ما خوش آمدید</h3>
+
+          <p>
+            محفل اشک خدام الشهدا، محفلی برای برگزاری مجالس
+            اهل‌بیت علیهم‌السلام و زنده نگه داشتن یاد و نام
+            شهداست. در این پایگاه می‌توانید از برنامه‌ها،
+            مراسم و اطلاعیه‌های هیئت مطلع شوید.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="events" id="events">
+      <div class="container">
+        <div class="section-heading">
+          <h2>مراسم و اطلاعیه‌ها</h2>
+          <p>آخرین اخبار و برنامه‌های محفل اشک خدام الشهدا</p>
+        </div>
+
+        <div class="event-grid">
+
+          <!-- برای افزودن اطلاعیه جدید، یک کارت را کپی و ویرایش کنید -->
+
+          <article class="event-card">
+            <span class="event-label">اطلاعیه</span>
+            <h3>اطلاعیه‌های هیئت</h3>
+            <p>
+              برنامه‌های جدید هیئت از طریق همین بخش اعلام خواهد شد.
+            </p>
+            <p>برای اطلاع از جزئیات مراسم، اطلاعیه‌های جدید را دنبال کنید.</p>
+          </article>
+
+          <article class="event-card">
+            <span class="event-label">مراسم</span>
+            <h3>برنامه‌های مذهبی</h3>
+            <p>
+              اطلاعات مربوط به زمان، مکان، سخنران و مداح
+              در این بخش قرار می‌گیرد.
+            </p>
+            <p>جزئیات هر برنامه پس از اعلام رسمی منتشر می‌شود.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>همراه محفل اشک خدام الشهدا باشید</h2>
+
+          <p>
+            برای دریافت تازه‌ترین اطلاعیه‌ها و اخبار هیئت،
+            از راه‌های ارتباطی رسمی ما استفاده کنید.
+          </p>
+
+          <!-- لینک کانال روبیکا را بعداً اینجا قرار می‌دهیم -->
+
+          <a class="button" href="#events">
+            مشاهده اطلاعیه‌ها
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <span>محفل اشک خدام الشهدا</span>
+      | تمامی حقوق محفوظ است.
+    </p>
+  </footer>
+
+</body>
+</html>
+
