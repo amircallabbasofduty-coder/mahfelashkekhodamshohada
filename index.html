@@ -40,6 +40,10 @@
       overflow-wrap: break-word;
     }
 
+    body.page-open {
+      overflow: hidden;
+    }
+
     img {
       max-width: 100%;
     }
@@ -48,6 +52,10 @@
       color: inherit;
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .container {
@@ -111,6 +119,40 @@
 
     .nav-links a:hover {
       color: var(--gold-light);
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: var(--gold);
+      color: #172319;
+      font-weight: bold;
+      font-size: 13px;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      text-align: center;
+    }
+
+    .button:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--gold-light);
+      margin-right: 7px;
+    }
+
+    .button-outline:hover {
+      color: var(--gold-light);
+      background: rgba(216,182,106,.1);
     }
 
     .donate-nav {
@@ -206,40 +248,6 @@
       max-width: 610px;
       margin: 0 auto 25px;
       font-size: 14px;
-    }
-
-    .button {
-      min-height: 46px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      background: var(--gold);
-      color: #172319;
-      font-weight: bold;
-      font-size: 13px;
-      border: 1px solid var(--gold);
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-      text-align: center;
-    }
-
-    .button:hover {
-      background: var(--gold-light);
-      border-color: var(--gold-light);
-    }
-
-    .button-outline {
-      background: transparent;
-      color: var(--gold-light);
-      margin-right: 7px;
-    }
-
-    .button-outline:hover {
-      color: var(--gold-light);
-      background: rgba(216,182,106,.1);
     }
 
     section {
@@ -441,67 +449,6 @@
       margin-bottom: 22px;
     }
 
-    .card-label {
-      display: block;
-      color: var(--gold-light);
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .card-number {
-      direction: ltr;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 0 auto 16px;
-    }
-
-    .card-number strong {
-      display: inline-block;
-      direction: ltr;
-      letter-spacing: 1px;
-      font-family: Tahoma, Arial, sans-serif;
-      font-size: clamp(18px, 4vw, 25px);
-      color: var(--gold-light);
-      background: rgba(0,0,0,.18);
-      border: 1px dashed rgba(216,182,106,.5);
-      border-radius: 10px;
-      padding: 10px 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .copy-button {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 9px 18px;
-      color: #172319;
-      background: var(--gold);
-      border: 1px solid var(--gold);
-      border-radius: 9px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-    }
-
-    .copy-button:hover {
-      background: var(--gold-light);
-      transform: translateY(-1px);
-    }
-
-    .donate-note {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 15px;
-    }
-
     .contact-section {
       background:
         radial-gradient(ellipse at center, rgba(36,81,58,.25), transparent 70%);
@@ -559,6 +506,137 @@
 
     footer span {
       color: var(--gold);
+    }
+
+    /* صفحه جداگانه شماره کارت */
+    .card-page {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      overflow-y: auto;
+      background:
+        radial-gradient(ellipse at top, #24513a 0%, transparent 60%),
+        linear-gradient(145deg, #0d2a20, #071a14 75%);
+      padding: 25px 0 max(25px, env(safe-area-inset-bottom));
+    }
+
+    .card-page.active {
+      display: block;
+    }
+
+    .card-page-inner {
+      min-height: calc(100vh - 50px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-page-box {
+      width: 100%;
+      max-width: 540px;
+      padding: 35px 24px;
+      text-align: center;
+      background: linear-gradient(145deg, #143b2b, #0b2118);
+      border: 1px solid rgba(216,182,106,.5);
+      border-radius: 20px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.22);
+    }
+
+    .card-page-symbol {
+      font-size: 48px;
+      line-height: 1.5;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card-page-box h1 {
+      font-size: clamp(22px, 5vw, 30px);
+      margin-bottom: 8px;
+    }
+
+    .card-page-box > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .card-label {
+      display: block;
+      color: var(--gold-light);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .card-number {
+      direction: ltr;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 18px;
+      width: 100%;
+    }
+
+    .card-number strong {
+      display: inline-block;
+      direction: ltr;
+      letter-spacing: 1px;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: clamp(18px, 4.5vw, 25px);
+      color: var(--gold-light);
+      background: rgba(0,0,0,.2);
+      border: 1px dashed rgba(216,182,106,.6);
+      border-radius: 10px;
+      padding: 13px 12px;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 280px;
+      padding: 10px 18px;
+      color: #172319;
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .copy-button:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .donate-note {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 16px;
+      min-height: 24px;
+    }
+
+    .back-button {
+      margin-top: 22px;
+      width: 100%;
+      max-width: 280px;
+      background: transparent;
+      color: var(--gold-light);
+      border-color: rgba(216,182,106,.65);
+    }
+
+    .back-button:hover {
+      background: rgba(216,182,106,.12);
+      border-color: var(--gold-light);
     }
 
     @media (max-width: 850px) {
@@ -719,30 +797,6 @@
         font-size: 13px;
       }
 
-      .donate-box {
-        padding: 27px 15px;
-        border-radius: 14px;
-      }
-
-      .donate-box > p {
-        font-size: 12px;
-      }
-
-      .card-number {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .card-number strong {
-        max-width: 100%;
-        font-size: clamp(17px, 5vw, 22px);
-      }
-
-      .copy-button {
-        width: 100%;
-        max-width: 280px;
-      }
-
       .contact-box {
         padding: 28px 16px;
         border-radius: 14px;
@@ -757,6 +811,19 @@
         width: 100%;
         max-width: 300px;
         margin-inline: auto;
+      }
+
+      .card-page-box {
+        padding: 29px 16px;
+        border-radius: 15px;
+      }
+
+      .card-page-symbol {
+        font-size: 40px;
+      }
+
+      .card-number strong {
+        font-size: clamp(17px, 5vw, 22px);
       }
 
       footer {
@@ -816,12 +883,12 @@
         <a href="#about">درباره هیئت</a>
         <a href="#events">برنامه هفتگی</a>
         <a href="#contact">ارتباط با ما</a>
-        <a class="donate-nav" href="#donate">♡ کمک به هیئت</a>
+        <a class="donate-nav" href="#donate-page" data-open-card-page>♡ کمک به هیئت</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="mainContent">
     <section class="hero" id="home">
       <div class="container hero-content">
         <img
@@ -914,40 +981,6 @@
       </div>
     </section>
 
-    <section class="donate-section" id="donate">
-      <div class="container">
-        <div class="donate-box">
-          <div class="donate-symbol">♡</div>
-
-          <h2>جهت کمک به محفل اشک خدام الشهدا</h2>
-
-          <p>
-            با کمک‌های مالی خود در برگزاری مجالس اهل‌بیت علیهم‌السلام
-            و تداوم برنامه‌های هیئت سهیم باشید.
-          </p>
-
-          <span class="card-label">شماره کارت جهت واریز کمک‌های شما</span>
-
-          <div class="card-number">
-            <strong id="cardNumber">5022291557168471</strong>
-          </div>
-
-          <button
-            class="copy-button"
-            type="button"
-            onclick="copyCardNumber(this)"
-          >
-            <span aria-hidden="true">▣</span>
-            <span>کپی شماره کارت</span>
-          </button>
-
-          <span class="donate-note" id="copyMessage">
-            از همراهی و حمایت شما صمیمانه سپاسگزاریم.
-          </span>
-        </div>
-      </div>
-    </section>
-
     <section class="contact-section" id="contact">
       <div class="container">
         <div class="contact-box">
@@ -978,64 +1011,168 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="mainFooter">
     <p>
       <span>محفل اشک خدام الشهدا</span>
       | تمامی حقوق محفوظ است.
     </p>
   </footer>
 
+  <!-- صفحه جداگانه کمک مالی و شماره کارت -->
+  <section
+    class="card-page"
+    id="cardPage"
+    aria-labelledby="cardPageTitle"
+    aria-hidden="true"
+  >
+    <div class="container card-page-inner">
+      <div class="card-page-box">
+        <div class="card-page-symbol" aria-hidden="true">♡</div>
+
+        <h1 id="cardPageTitle">کمک به محفل اشک خدام الشهدا</h1>
+
+        <p>
+          از همراهی و حمایت شما در برگزاری مجالس اهل‌بیت علیهم‌السلام
+          صمیمانه سپاسگزاریم.
+        </p>
+
+        <span class="card-label">شماره کارت جهت واریز کمک‌های شما</span>
+
+        <div class="card-number">
+          <strong id="cardNumber">5022291557168471</strong>
+        </div>
+
+        <button
+          class="copy-button"
+          id="copyCardButton"
+          type="button"
+        >
+          <span aria-hidden="true">▣</span>
+          <span id="copyButtonText">کپی شماره کارت</span>
+        </button>
+
+        <span class="donate-note" id="copyMessage" aria-live="polite">
+          با سپاس از نذورات و کمک‌های شما
+        </span>
+
+        <button
+          class="button back-button"
+          id="backToHome"
+          type="button"
+        >
+          <span aria-hidden="true">↩</span>
+          بازگشت به صفحه اصلی
+        </button>
+      </div>
+    </div>
+  </section>
+
   <script>
-    function copyCardNumber(button) {
-      const cardNumber = document.getElementById("cardNumber").textContent.trim();
-      const message = document.getElementById("copyMessage");
-      const originalText = button.innerHTML;
+    (() => {
+      const cardPage = document.getElementById("cardPage");
+      const mainContent = document.getElementById("mainContent");
+      const mainFooter = document.getElementById("mainFooter");
+      const backButton = document.getElementById("backToHome");
+      const copyButton = document.getElementById("copyCardButton");
+      const copyButtonText = document.getElementById("copyButtonText");
+      const copyMessage = document.getElementById("copyMessage");
+      const cardNumberElement = document.getElementById("cardNumber");
 
-      function showSuccess() {
-        button.innerHTML = "✓ شماره کارت کپی شد";
-        message.textContent = "شماره کارت با موفقیت کپی شد.";
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          message.textContent = "از همراهی و حمایت شما صمیمانه سپاسگزاریم.";
-        }, 2500);
+      let previousTitle = document.title;
+      let messageTimer;
+
+      function openCardPage(event) {
+        if (event) event.preventDefault();
+
+        previousTitle = document.title;
+        cardPage.classList.add("active");
+        cardPage.setAttribute("aria-hidden", "false");
+        mainContent.setAttribute("aria-hidden", "true");
+        mainFooter.setAttribute("aria-hidden", "true");
+        document.body.classList.add("page-open");
+        document.title = "شماره کارت هیئت | محفل اشک خدام الشهدا";
+
+        history.pushState({ cardPage: true }, "", "#donate-page");
+        window.scrollTo(0, 0);
+        backButton.focus();
       }
 
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(cardNumber)
-          .then(showSuccess)
-          .catch(() => fallbackCopy(cardNumber, button, message, originalText));
-      } else {
-        fallbackCopy(cardNumber, button, message, originalText);
-      }
-    }
+      function closeCardPage() {
+        cardPage.classList.remove("active");
+        cardPage.setAttribute("aria-hidden", "true");
+        mainContent.setAttribute("aria-hidden", "false");
+        mainFooter.setAttribute("aria-hidden", "false");
+        document.body.classList.remove("page-open");
+        document.title = previousTitle;
 
-    function fallbackCopy(text, button, message, originalText) {
-      const input = document.createElement("textarea");
-      input.value = text;
-      input.style.position = "fixed";
-      input.style.opacity = "0";
-      document.body.appendChild(input);
-      input.select();
-
-      try {
-        const successful = document.execCommand("copy");
-        if (successful) {
-          button.innerHTML = "✓ شماره کارت کپی شد";
-          message.textContent = "شماره کارت با موفقیت کپی شد.";
-        } else {
-          message.textContent = "لطفاً شماره کارت را به‌صورت دستی کپی کنید.";
+        if (window.location.hash === "#donate-page") {
+          history.replaceState(null, "", window.location.pathname + window.location.search);
         }
-      } catch (error) {
-        message.textContent = "لطفاً شماره کارت را به‌صورت دستی کپی کنید.";
+
+        const donateButton = document.querySelector("[data-open-card-page]");
+        if (donateButton) donateButton.focus();
       }
 
-      document.body.removeChild(input);
+      async function copyCardNumber() {
+        const number = cardNumberElement.textContent.trim();
 
-      setTimeout(() => {
-        button.innerHTML = originalText;
-        message.textContent = "از همراهی و حمایت شما صمیمانه سپاسگزاریم.";
-      }, 2500);
-    }
+        clearTimeout(messageTimer);
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(number);
+          } else {
+            const input = document.createElement("textarea");
+            input.value = number;
+            input.setAttribute("readonly", "");
+            input.style.position = "fixed";
+            input.style.left = "-9999px";
+            document.body.appendChild(input);
+            input.select();
+
+            const successful = document.execCommand("copy");
+            document.body.removeChild(input);
+
+            if (!successful) {
+              throw new Error("Copy failed");
+            }
+          }
+
+          copyButtonText.textContent = "✓ شماره کارت کپی شد";
+          copyMessage.textContent = "شماره کارت با موفقیت کپی شد.";
+        } catch (error) {
+          copyMessage.textContent = "کپی خودکار انجام نشد؛ شماره کارت را دستی انتخاب و کپی کنید.";
+        }
+
+        messageTimer = setTimeout(() => {
+          copyButtonText.textContent = "کپی شماره کارت";
+          copyMessage.textContent = "با سپاس از نذورات و کمک‌های شما";
+        }, 3000);
+      }
+
+      document.querySelectorAll("[data-open-card-page]").forEach((button) => {
+        button.addEventListener("click", openCardPage);
+      });
+
+      backButton.addEventListener("click", closeCardPage);
+      copyButton.addEventListener("click", copyCardNumber);
+
+      window.addEventListener("popstate", () => {
+        if (cardPage.classList.contains("active")) {
+          closeCardPage();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && cardPage.classList.contains("active")) {
+          closeCardPage();
+        }
+      });
+
+      if (window.location.hash === "#donate-page") {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    })();
   </script>
 
 </body>
