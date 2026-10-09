@@ -77,14 +77,15 @@
     }
 
     .brand-icon {
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
       flex-shrink: 0;
       border: 1px solid var(--gold);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 24px;
+      display: block;
+      object-fit: contain;
+      padding: 3px;
+      background: var(--surface);
     }
 
     .nav-links {
@@ -100,8 +101,8 @@
     }
 
     .hero {
-      min-height: 490px;
-      padding: 85px 0;
+      min-height: 560px;
+      padding: 65px 0 85px;
       display: flex;
       align-items: center;
       text-align: center;
@@ -137,6 +138,21 @@
       z-index: 1;
       max-width: 760px;
       margin: auto;
+    }
+
+    .hero-logo {
+      display: block;
+      width: 155px;
+      height: 155px;
+      max-width: 45vw;
+      max-height: 45vw;
+      object-fit: contain;
+      margin: 0 auto 24px;
+      padding: 8px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      background: rgba(7,26,20,.7);
+      box-shadow: 0 0 35px rgba(216,182,106,.16);
     }
 
     .eyebrow {
@@ -355,8 +371,14 @@
       }
 
       .hero {
-        min-height: 420px;
-        padding: 65px 0;
+        min-height: 440px;
+        padding: 50px 0 65px;
+      }
+
+      .hero-logo {
+        width: 125px;
+        height: 125px;
+        margin-bottom: 18px;
       }
 
       .hero p {
@@ -396,7 +418,11 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home" aria-label="صفحه اصلی">
-        <span class="brand-icon">ع</span>
+        <img
+          class="brand-icon"
+          src="images/legp.jfif"
+          alt="لوگوی محفل اشک خدام الشهدا"
+        >
         <span>محفل اشک خدام الشهدا</span>
       </a>
 
@@ -412,6 +438,13 @@
   <main>
     <section class="hero" id="home">
       <div class="container hero-content">
+
+        <img
+          class="hero-logo"
+          src="images/legp.jfif"
+          alt="نشان محفل اشک خدام الشهدا"
+        >
+
         <div class="eyebrow">پایگاه رسمی هیئت مذهبی</div>
 
         <h1>محفل اشک خدام الشهدا</h1>
